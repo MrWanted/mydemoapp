@@ -36,4 +36,5 @@ This is a Spring Boot project designed to demonstrate various features and integ
 1. **Clone the repository**:
    ```bash
    git clone git@github.com:MrWanted/mydemoapp.git
-   cd spring-demo-app
+   cd mydemoapp
+   docker-compose up
