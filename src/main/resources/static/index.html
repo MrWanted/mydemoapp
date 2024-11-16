@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Demo</title>
+    <script>
+        function displayMessage(event) {
+            // Prevent the form from being submitted to the server
+            event.preventDefault();
+
+            // Get the value from the input field
+            const name = document.getElementById('name').value;
+
+            // Display the greeting message
+            const message = document.getElementById('message');
+            message.textContent = "Hello, " + name + "!";
+        }
+    </script>
+</head>
+<body>
+<p><a href="http://localhost:8082/swagger-ui/index.html#/" target="_blank">Click here for documentation</a></p>
+<!-- Form where user enters their name -->
+<form id="sampleForm" action="#" method="POST" onsubmit="displayMessage(event)">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Message displayed after form submission -->
+<div id="message"></div>
+
+</body>
+</html>

@@ -1,3 +1,4 @@
+/*
 package com.example.mydemoapp;
 
 import org.springframework.boot.SpringApplication;
@@ -9,3 +10,4 @@ public class TestMydemoappApplication {
 	}
 
 }
+*/

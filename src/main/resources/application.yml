@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: mydemoapp
+
+
+
+server:
+  port: 8082
+external:
+  api:
+    todosUrl: https://jsonplaceholder.typicode.com/todos
+    personUrl: http://localhost:8080/person/
