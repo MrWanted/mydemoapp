@@ -21,20 +21,27 @@ public class OkHttpConfig {
                 .readTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
-                /*.addInterceptor(chain -> {
+                .addInterceptor(chain -> {
                     Request request = chain.request();
-                    try (Response response = chain.proceed(request)) {
+                    Response response = null;
+                    try {
+                        response = chain.proceed(request);
                         if (!response.isSuccessful()) {
-                            log.warn("Request failed, retrying: {}", request.url());
-                            return chain.proceed(request);
+                            log.warn("Request failed with code {}: {}",
+                                    response.code(), request.url());
+                            response.close();
+                            // Retry the request
+                            response = chain.proceed(request);
                         }
-                        // Clone the response before returning since we're in a try-with-resources block
-                        return response.newBuilder().build();
+                        return response;
                     } catch (IOException e) {
                         log.warn("Request failed, retrying: {}", request.url(), e);
+                        if (response != null) {
+                            response.close();
+                        }
                         return chain.proceed(request);
                     }
-                })*/
+                })
                 .build();
     }
 }
